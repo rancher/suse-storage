@@ -1,0 +1,69 @@
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        required: true
+        type: string
+      component_source:
+        required: true
+        type: string
+      image_name:
+        required: true
+        type: string
+      image_tag:
+        required: true
+        type: string
+      image_platforms:
+        type: string
+        default: ""
+      pre_build_script:
+        type: string
+        default: ""
+
+jobs:
+  build_push_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.component_source }}
+          ref: ${{ inputs.release_tag }}
+
+      # execute pre-build script before build
+      - name: Checkout pre-build script
+        uses: actions/checkout@v4
+        if: inputs.pre_build_script != ''
+        with:
+          repository: rancher/longhorn-prime
+          ref: ${{ inputs.release_tag }}
+          path: build/prime_src
+      - name: Execute pre-build script
+        if: inputs.pre_build_script != ''
+        run: |
+          bash build/prime_src/scripts/${{ inputs.pre_build_script }} .
+          HEAD_TAG=$(git tag -l --contains HEAD | head -n 1)
+          echo "HEAD is tagged as \"${HEAD_TAG:-<no tag>}\", and the latest commit is now:"
+          git show --stat
+
+      - name: Read secrets
+        uses: rancher-eio/read-vault-secrets@main
+        with:
+          secrets: |
+            secret/data/github/repo/${{ github.repository }}/rancher-prime-registry/credentials registry | PRIME_REGISTRY ;
+            secret/data/github/repo/${{ github.repository }}/rancher-prime-registry/credentials username | PRIME_REGISTRY_USERNAME ;
+            secret/data/github/repo/${{ github.repository }}/rancher-prime-registry/credentials password | PRIME_REGISTRY_PASSWORD
+
+      - name: build and push image
+        uses: rancher/ecm-distro-tools/actions/publish-image@master
+        with:
+          image: ${{ inputs.image_name }}
+          tag: ${{ inputs.image_tag }}
+          platforms: ${{ inputs.image_platforms }}
+          prime-registry: ${{ env.PRIME_REGISTRY }}
+          prime-repo: longhorn
+          prime-username: ${{ env.PRIME_REGISTRY_USERNAME }}
+          prime-password: ${{ env.PRIME_REGISTRY_PASSWORD }}
+          make-target: workflow-image-build-push-secure
+          push-to-prime: true
+          push-to-public: false
