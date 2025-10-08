@@ -1,1 +1,1 @@
-# longhorn
+# SUSE Storage
