@@ -73,3 +73,5 @@ For information about issues identified after this release, see [Release-Known-I
 - @sushant-suse
 - @rebeccazzzz
 - @forbesguthrie
+- @recena
+- @marcosbc
