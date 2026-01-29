@@ -1,10 +1,10 @@
-# Longhorn v1.10.2 Release Notes
+# SUSE Storage v1.10.2 Release Notes
 
-Longhorn 1.10.2 introduces several improvements and bug fixes that are intended to improve system quality, resilience, stability and security.
+SUSE Storage 1.10.2 introduces several improvements and bug fixes that are intended to improve system quality, resilience, stability and security.
 
-We welcome feedback and contributions to help continuously improve Longhorn.
+We welcome feedback and contributions to help continuously improve SUSE Storage.
 
-For terminology and context on Longhorn releases, see [Releases](https://github.com/longhorn/longhorn#releases).
+For terminology and context on SUSE Storage releases, see [Releases](https://github.com/rancher/suse-storage/releases).
 
 ## Important Fixes
 
@@ -61,16 +61,20 @@ For more details, see [Issue #12251](https://github.com/longhorn/longhorn/issues
 ## Installation
 
 >  [!IMPORTANT]
-**Ensure that your cluster is running Kubernetes v1.25 or later before installing Longhorn v1.10.2.**
+**Ensure that your cluster is running Kubernetes v1.25 or later before installing SUSE Storage v1.10.2.**
 
-You can install Longhorn using a variety of tools, including Rancher, Kubectl, and Helm. For more information about installation methods and requirements, see [Quick Installation](https://longhorn.io/docs/1.10.2/deploy/install/) in the Longhorn documentation.
+You can install SUSE Storage using a variety of tools, including Rancher, Kubectl, and Helm. For more information about installation methods and requirements, see [Installation](https://documentation.suse.com/cloudnative/storage/1.10/en/installation-setup/installation/installation.html) in the SUSE Storage documentation.
 
 ## Upgrade
 
 >  [!IMPORTANT]
-**Ensure that your cluster is running Kubernetes v1.25 or later before upgrading from Longhorn v1.9.x to v1.10.2.**
+**Ensure that your cluster is running Kubernetes v1.25 or later before upgrading from SUSE Storage v1.9.x to v1.10.2. To upgrade from Longhorn v1.9.x to SUSE Storage v1.10.2, please refer to the [Migration](#migration) section.**
 
-Longhorn only allows upgrades from supported versions. For more information about upgrade paths and procedures, see [Upgrade](https://longhorn.io/docs/1.10.2/deploy/upgrade/) in the Longhorn documentation.
+SUSE Storage only allows upgrades from supported versions. For more information about upgrade paths and procedures, see [Upgrade](https://documentation.suse.com/cloudnative/storage/1.10/en/upgrades/longhorn-components/upgrade-longhorn-manager.html) in the SUSE Storage documentation.
+
+## Migration
+
+To migrate Longhorn to SUSE Storage, please refer to the procedures described in the [Migrating to SUSE Storage](https://documentation.suse.com/cloudnative/storage/1.10/en/migration/migration.html) documentation.
 
 ## Post-Release Known Issues
 
@@ -126,7 +130,9 @@ For information about issues identified after this release, see [Release-Known-I
 - @houhoucoop
 - @innobead
 - @mantissahz
+- @marcosbc
 - @rebeccazzzz
+- @recena
 - @roger-ryao
 - @shuo-wu
 - @sushant-suse
