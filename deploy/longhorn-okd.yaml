@@ -5662,7 +5662,7 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
         - name: LONGHORN_DISTRO
-          value: "longhorn"
+          value: "prime"
         
       - name: pre-pull-share-manager-image
         imagePullPolicy: IfNotPresent
