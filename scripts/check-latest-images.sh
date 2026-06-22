@@ -96,13 +96,13 @@ create_update_pr() {
   if git diff --cached --quiet; then
     echo "No changes to deploy/longhorn-images.txt for v${target_branch}, skipping PR."
   else
-    git commit -m "Update longhorn-images.txt for v${target_branch}"
+    git commit -m "Update longhorn-images.txt for ${target_branch}"
     git push origin "${update_branch}"
     gh pr create \
       --base "${target_branch}" \
       --head "${update_branch}" \
-      --title "chore: update longhorn-images.txt for v${target_branch}" \
-      --body "Auto-generated PR to update image versions for SUSE Storage v${target_branch}."
+      --title "chore: update longhorn-images.txt for ${target_branch}" \
+      --body "Auto-generated PR to update image versions for SUSE Storage ${target_branch}."
   fi
 
   git checkout - 2>/dev/null || true
