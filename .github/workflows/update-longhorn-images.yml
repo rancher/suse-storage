@@ -1,0 +1,46 @@
+name: Update longhorn-images.txt
+
+on:
+  schedule:
+    - cron: "0 10 * * *"  # 18:00 UTC+8
+  workflow_dispatch:
+    inputs:
+      suse_storage_versions:
+        description: 'SUSE Storage chart versions (space-separated, e.g., "1.11.2 1.10.4 1.9.6")'
+        required: false
+        type: string
+
+env:
+  DEFAULT_VERSIONS: "1.11.2 1.10.4 1.9.6"
+
+jobs:
+  check-latest-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name "Derek Su"
+          git config user.email "derek.su@suse.com"
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Helm registry login
+        run: |
+          helm registry login dp.apps.rancher.io -u dsu@suse.com -p "${{ secrets.CUSTOM_APPCO_TOKEN }}"
+
+      - name: Check latest image versions
+        env:
+          GH_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        run: |
+          bash scripts/check-latest-images.sh "${{ inputs.suse_storage_versions || env.DEFAULT_VERSIONS }}"
