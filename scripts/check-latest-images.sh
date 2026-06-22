@@ -57,9 +57,9 @@ collect_images() {
 
       slug=$(extract_slug "$repo")
       if [[ -n "$registry" && "$registry" != "null" ]]; then
-        image_ref="${registry}/${slug}"
+        image_ref="${registry}/${repo}"
       else
-        image_ref=$(extract_image_ref "$repo")
+        image_ref="$repo"
       fi
       version=$(extract_version "$tag")
       latest=$(fetch_latest_tag "$slug" "$version")
