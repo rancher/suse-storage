@@ -17,6 +17,7 @@ fetch_latest_tag() {
       | sort_by(.revision | split(".") | map(tonumber))
       | last
       | .name
+      | split(":") | last
     '
 }
 
