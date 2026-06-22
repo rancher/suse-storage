@@ -20,3 +20,11 @@ jobs:
         destination_branch: "v*.*.x"
         sync_tags: "true"
         github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+    - name: repo-sync-master
+      uses: rancher/gh-issue-mgr/github-sync@main
+      with:
+        source_repo: "https://github.com/longhorn/longhorn.git"
+        source_branch: "master"
+        destination_branch: "master"
+        sync_tags: "true"
+        github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
