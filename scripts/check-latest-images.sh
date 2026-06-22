@@ -47,7 +47,8 @@ collect_images() {
     [ -z "$keys" ] && continue
 
     while IFS= read -r key; do
-      local repo tag slug image_ref version latest
+      local registry repo tag slug image_ref version latest
+      registry=$(yq e ".image.${section}.${key}.registry" "${values_file}")
       repo=$(yq e ".image.${section}.${key}.repository" "${values_file}")
       tag=$(yq e ".image.${section}.${key}.tag" "${values_file}")
 
@@ -55,7 +56,11 @@ collect_images() {
       [[ "$tag" == "null" || -z "$tag" ]] && continue
 
       slug=$(extract_slug "$repo")
-      image_ref=$(extract_image_ref "$repo")
+      if [[ -n "$registry" && "$registry" != "null" ]]; then
+        image_ref="${registry}/${slug}"
+      else
+        image_ref=$(extract_image_ref "$repo")
+      fi
       version=$(extract_version "$tag")
       latest=$(fetch_latest_tag "$slug" "$version")
 

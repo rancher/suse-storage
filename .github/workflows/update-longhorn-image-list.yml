@@ -1,4 +1,4 @@
-name: Update longhorn-images.txt
+name: Update Longhorn Image List
 
 on:
   schedule:
