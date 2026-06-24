@@ -562,8 +562,6 @@ metrics:
     # documentation](https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.Endpoint) for
     # formatting details.
     metricRelabelings: []
-    # -- Per-scrape sample limit. A value of 0 (default) omits sampleLimit.
-    sampleLimit: 0
 # -- Setting that allows Longhorn to generate code coverage profiles.
 enableGoCoverDir: false
 # -- Add extra objects manifests
