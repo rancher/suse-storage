@@ -1,41 +1,3 @@
-{{- if .Values.openshift.enabled }}
-{{- if .Values.openshift.ui.route }}
-# https://github.com/openshift/oauth-proxy/blob/master/contrib/sidecar.yaml
-# Create a proxy service account and ensure it will use the route "proxy"
-# Create a secure connection to the proxy via a route
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  labels: {{- include "longhorn.labels" . | nindent 4 }}
-    app: longhorn-ui
-  name: {{ .Values.openshift.ui.route }}
-  namespace: {{ include "release_namespace" . }}
-spec:
-  to:
-    kind: Service
-    name: longhorn-ui
-  tls:
-    termination: reencrypt
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels: {{- include "longhorn.labels" . | nindent 4 }}
-    app: longhorn-ui
-  name: longhorn-ui
-  namespace: {{ include "release_namespace" . }}
-  annotations:
-    service.alpha.openshift.io/serving-cert-secret-name: longhorn-ui-tls
-spec:
-  ports:
-  - name: longhorn-ui
-    port: {{ .Values.openshift.ui.port | default 443 }}
-    targetPort: {{ .Values.openshift.ui.proxy | default 8443 }}
-  selector:
-    app: longhorn-ui
----
-{{- end }}
-{{- end }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -57,6 +19,7 @@ spec:
       affinity:
       {{- toYaml .Values.longhornUI.affinity | nindent 8 }}
       containers:
+<<<<<<< HEAD
       {{- if .Values.openshift.enabled }}
       {{- if .Values.openshift.ui.route }}
       - name: oauth-proxy
@@ -83,6 +46,8 @@ spec:
             name: longhorn-ui-tls
       {{- end }}
       {{- end }}
+=======
+>>>>>>> 218de3a (chore: remove OKD/OpenShift support from SUSE Storage)
       - name: longhorn-ui
         image: {{ with (coalesce .Values.global.imageRegistry (include "registry_url" .) .Values.image.longhorn.ui.registry) }}{{ . }}/{{ end }}{{ .Values.image.longhorn.ui.repository }}:{{ .Values.image.longhorn.ui.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -102,13 +67,6 @@ spec:
           - name: LONGHORN_UI_PORT
             value: "8000"
       volumes:
-      {{- if .Values.openshift.enabled }}
-      {{- if .Values.openshift.ui.route }}
-      - name: longhorn-ui-tls
-        secret:
-          secretName: longhorn-ui-tls
-      {{- end }}
-      {{- end }}
       - emptyDir: {}
         name: nginx-cache
       - emptyDir: {}
