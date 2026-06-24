@@ -5,7 +5,7 @@ set -o xtrace
 
 PRJ_DIR=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/.." 2>/dev/null || realpath "$(dirname "${BASH_SOURCE[0]}")/.." 2>/dev/null)
 CHART_DIR="$PRJ_DIR/chart"
-DEPLOY_YAMLS=("$PRJ_DIR/deploy/longhorn.yaml" "$PRJ_DIR/deploy/longhorn-okd.yaml")
+DEPLOY_YAMLS=("$PRJ_DIR/deploy/longhorn.yaml")
 DEPLOY_YAML_TMP="$PRJ_DIR/deploy/longhorn.yaml.tmp"
 NAMESPACE=${NAMESPACE:-longhorn-system}
 
