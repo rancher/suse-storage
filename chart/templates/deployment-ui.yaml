@@ -19,35 +19,6 @@ spec:
       affinity:
       {{- toYaml .Values.longhornUI.affinity | nindent 8 }}
       containers:
-<<<<<<< HEAD
-      {{- if .Values.openshift.enabled }}
-      {{- if .Values.openshift.ui.route }}
-      - name: oauth-proxy
-        {{- if .Values.image.openshift.oauthProxy.repository }}
-        image: {{ with (coalesce .Values.global.imageRegistry (include "registry_url" .) .Values.image.openshift.oauthProxy.registry) }}{{ . }}/{{ end }}{{ .Values.image.openshift.oauthProxy.repository }}:{{ .Values.image.openshift.oauthProxy.tag }}
-        {{- else }}
-        image: ""
-        {{- end }}
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: {{ .Values.openshift.ui.proxy | default 8443 }}
-          name: public
-        args:
-        - --https-address=:{{ .Values.openshift.ui.proxy | default 8443 }}
-        - --provider=openshift
-        - --openshift-service-account=longhorn-ui-service-account
-        - --upstream=http://localhost:8000
-        - --tls-cert=/etc/tls/private/tls.crt
-        - --tls-key=/etc/tls/private/tls.key
-        - --cookie-secret=SECRET
-        - --openshift-sar={"namespace":"{{ include "release_namespace" . }}","group":"longhorn.io","resource":"setting","verb":"delete"}
-        volumeMounts:
-          - mountPath: /etc/tls/private
-            name: longhorn-ui-tls
-      {{- end }}
-      {{- end }}
-=======
->>>>>>> 218de3a (chore: remove OKD/OpenShift support from SUSE Storage)
       - name: longhorn-ui
         image: {{ with (coalesce .Values.global.imageRegistry (include "registry_url" .) .Values.image.longhorn.ui.registry) }}{{ . }}/{{ end }}{{ .Values.image.longhorn.ui.repository }}:{{ .Values.image.longhorn.ui.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
