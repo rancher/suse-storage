@@ -128,6 +128,7 @@ image:
       # -- Repository for the CSI liveness probe image. When unspecified, Longhorn uses the default value.
       repository: longhornio/livenessprobe
       # -- Tag for the CSI liveness probe image. When unspecified, Longhorn uses the default value.
+<<<<<<< HEAD
       tag: v2.19.0
   openshift:
     oauthProxy:
@@ -137,6 +138,9 @@ image:
       repository: ""
       # -- Tag for the OAuth Proxy image. Specify OCP/OKD version 4.1 or later (including version 4.15, which is available at quay.io/openshift/origin-oauth-proxy:4.15). This setting applies only to OpenShift users.
       tag: ""
+=======
+      tag: v2.18.0-20260428
+>>>>>>> 218de3a (chore: remove OKD/OpenShift support from SUSE Storage)
   # -- Image pull policy that applies to all user-deployed Longhorn components, such as Longhorn Manager, Longhorn driver, and Longhorn UI.
   pullPolicy: IfNotPresent
 service:
@@ -556,6 +560,7 @@ metrics:
     # documentation](https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.Endpoint) for
     # formatting details.
     metricRelabelings: []
+<<<<<<< HEAD
 ## openshift settings
 openshift:
   # -- Setting that allows Longhorn to integrate with OpenShift.
@@ -567,6 +572,10 @@ openshift:
     port: 443
     # -- Port for proxy that provides access to the OpenShift web console.
     proxy: 8443
+=======
+    # -- Per-scrape sample limit. A value of 0 (default) omits sampleLimit.
+    sampleLimit: 0
+>>>>>>> 218de3a (chore: remove OKD/OpenShift support from SUSE Storage)
 # -- Setting that allows Longhorn to generate code coverage profiles.
 enableGoCoverDir: false
 # -- Add extra objects manifests
