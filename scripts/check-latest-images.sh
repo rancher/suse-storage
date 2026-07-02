@@ -97,7 +97,7 @@ create_update_pr() {
   if git diff --cached --quiet; then
     echo "No changes to deploy/longhorn-images.txt for v${target_branch}, skipping PR."
   else
-    git commit -m "Update longhorn-images.txt for ${target_branch}"
+    git commit -m "chore: update longhorn-images.txt for ${target_branch}"
     git push origin "${update_branch}"
     local pr_url
     pr_url=$(gh pr create \
