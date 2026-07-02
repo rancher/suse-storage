@@ -99,15 +99,46 @@ create_update_pr() {
   else
     git commit -m "Update longhorn-images.txt for ${target_branch}"
     git push origin "${update_branch}"
-    gh pr create \
+    local pr_url
+    pr_url=$(gh pr create \
       --base "${target_branch}" \
       --head "${update_branch}" \
       --title "chore: update longhorn-images.txt for ${target_branch}" \
-      --body "Auto-generated PR to update image versions for SUSE Storage ${target_branch}."
+      --body "Auto-generated PR to update image versions for SUSE Storage ${target_branch}.")
+    echo "Created PR: ${pr_url}"
+    auto_merge_if_no_conflict "${pr_url}"
   fi
 
   git checkout - 2>/dev/null || true
   popd > /dev/null
+}
+
+auto_merge_if_no_conflict() {
+  local pr_url="$1"
+  local mergeable="" attempt=0
+
+  # GitHub computes mergeable state asynchronously; poll briefly.
+  while (( attempt < 10 )); do
+    mergeable=$(gh pr view "${pr_url}" --json mergeable -q .mergeable 2>/dev/null || echo "")
+    if [[ "$mergeable" == "MERGEABLE" || "$mergeable" == "CONFLICTING" ]]; then
+      break
+    fi
+    attempt=$((attempt + 1))
+    sleep 3
+  done
+
+  case "$mergeable" in
+    MERGEABLE)
+      echo "PR is mergeable, merging: ${pr_url}"
+      gh pr merge "${pr_url}" --squash --delete-branch
+      ;;
+    CONFLICTING)
+      echo "PR has conflicts, leaving it open for manual resolution: ${pr_url}"
+      ;;
+    *)
+      echo "PR mergeable state is '${mergeable:-unknown}', leaving it open: ${pr_url}"
+      ;;
+  esac
 }
 
 # --- Main ---
