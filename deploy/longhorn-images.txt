@@ -1,7 +1,7 @@
 dp.apps.rancher.io/containers/longhorn-engine:1.9.6-14.10
 dp.apps.rancher.io/containers/longhorn-manager:1.9.6-16.10
 dp.apps.rancher.io/containers/longhorn-ui:1.9.6-12.3
-dp.apps.rancher.io/containers/longhorn-instance-manager:1.9.6-12.15
+dp.apps.rancher.io/containers/longhorn-instance-manager:1.9.6-12.16
 dp.apps.rancher.io/containers/longhorn-share-manager:1.9.6-12.6
 dp.apps.rancher.io/containers/longhorn-backing-image-manager:1.9.6-13.10
 dp.apps.rancher.io/containers/rancher-support-bundle-kit:0.0.87-10.3
