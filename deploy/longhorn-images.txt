@@ -1,9 +1,9 @@
-dp.apps.rancher.io/containers/longhorn-engine:1.9.6-15.5
-dp.apps.rancher.io/containers/longhorn-manager:1.9.6-17.6
-dp.apps.rancher.io/containers/longhorn-ui:1.9.6-13.2
-dp.apps.rancher.io/containers/longhorn-instance-manager:1.9.6-13.8
-dp.apps.rancher.io/containers/longhorn-share-manager:1.9.6-13.6
-dp.apps.rancher.io/containers/longhorn-backing-image-manager:1.9.6-14.7
+dp.apps.rancher.io/containers/longhorn-engine:1.9.6-15.6
+dp.apps.rancher.io/containers/longhorn-manager:1.9.6-17.7
+dp.apps.rancher.io/containers/longhorn-ui:1.9.6-13.3
+dp.apps.rancher.io/containers/longhorn-instance-manager:1.9.6-13.9
+dp.apps.rancher.io/containers/longhorn-share-manager:1.9.6-13.7
+dp.apps.rancher.io/containers/longhorn-backing-image-manager:1.9.6-14.8
 dp.apps.rancher.io/containers/rancher-support-bundle-kit:0.0.87-10.3
 dp.apps.rancher.io/containers/kubernetes-csi-external-attacher:4.12.0-16.1
 dp.apps.rancher.io/containers/kubernetes-csi-external-provisioner:5.3.0-16.1
