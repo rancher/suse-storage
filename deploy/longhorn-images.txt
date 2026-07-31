@@ -1,5 +1,5 @@
 dp.apps.rancher.io/containers/longhorn-engine:1.10.4-9.7
-dp.apps.rancher.io/containers/longhorn-manager:1.10.4-9.7
+dp.apps.rancher.io/containers/longhorn-manager:1.10.4-9.8
 dp.apps.rancher.io/containers/longhorn-ui:1.10.4-9.1
 dp.apps.rancher.io/containers/longhorn-instance-manager:1.10.4-9.9
 dp.apps.rancher.io/containers/longhorn-share-manager:1.10.4-9.3
