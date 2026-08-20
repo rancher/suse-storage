@@ -18,7 +18,7 @@ jobs:
         source_repo: "https://github.com/longhorn/longhorn.git"
         source_branch: "v*.*.x"
         destination_branch: "v*.*.x"
-        sync_tags: "true"
+        sync_tags: "false"
         github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
     - name: repo-sync-master
       uses: rancher/gh-issue-mgr/github-sync@main
@@ -26,5 +26,5 @@ jobs:
         source_repo: "https://github.com/longhorn/longhorn.git"
         source_branch: "master"
         destination_branch: "master"
-        sync_tags: "true"
+        sync_tags: "false"
         github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
