@@ -21,6 +21,7 @@
   "semanticCommitType": "chore",
   "semanticCommitScope": "deps",
   "prHourlyLimit": 12,
+  "prConcurrentLimit": 0,
   "timezone": "Asia/Taipei",
   "postUpdateOptions": ["gomodTidy"],
   "minimumReleaseAge": "2 weeks",
@@ -114,7 +115,7 @@
         "digest"
       ],
       "matchPackageNames": [
-        "github.com/rancher/longhorn-spdk-engine"
+        "github.com/longhorn/longhorn-spdk-engine"
       ],
       "matchManagers": [
         "gomod"
@@ -172,12 +173,12 @@
         "v1.11.x"
       ],
       "matchPackageNames": [
-        "github.com/rancher/longhorn-engine",
-        "github.com/rancher/longhorn-spdk-engine",
-        "github.com/rancher/longhorn-instance-manager",
-        "github.com/rancher/longhorn-share-manager",
-        "github.com/rancher/longhorn-backing-image-manager",
-        "github.com/rancher/longhorn-cli"
+        "github.com/longhorn/longhorn-engine",
+        "github.com/longhorn/longhorn-spdk-engine",
+        "github.com/longhorn/longhorn-instance-manager",
+        "github.com/longhorn/longhorn-share-manager",
+        "github.com/longhorn/backing-image-manager",
+        "github.com/longhorn/cli"
       ],
       "allowedVersions": "/^v1\\.11\\.\\S+/",
       "matchManagers": [
@@ -190,12 +191,12 @@
         "v1.10.x"
       ],
       "matchPackageNames": [
-        "github.com/rancher/longhorn-engine",
-        "github.com/rancher/longhorn-spdk-engine",
-        "github.com/rancher/longhorn-instance-manager",
-        "github.com/rancher/longhorn-share-manager",
-        "github.com/rancher/longhorn-backing-image-manager",
-        "github.com/rancher/longhorn-cli"
+        "github.com/longhorn/longhorn-engine",
+        "github.com/longhorn/longhorn-spdk-engine",
+        "github.com/longhorn/longhorn-instance-manager",
+        "github.com/longhorn/longhorn-share-manager",
+        "github.com/longhorn/backing-image-manager",
+        "github.com/longhorn/cli"
       ],
       "allowedVersions": "/^v1\\.10\\.\\S+/",
       "matchManagers": [
@@ -208,12 +209,12 @@
         "v1.9.x"
       ],
       "matchPackageNames": [
-        "github.com/rancher/longhorn-engine",
-        "github.com/rancher/longhorn-spdk-engine",
-        "github.com/rancher/longhorn-instance-manager",
-        "github.com/rancher/longhorn-share-manager",
-        "github.com/rancher/longhorn-backing-image-manager",
-        "github.com/rancher/longhorn-cli"
+        "github.com/longhorn/longhorn-engine",
+        "github.com/longhorn/longhorn-spdk-engine",
+        "github.com/longhorn/longhorn-instance-manager",
+        "github.com/longhorn/longhorn-share-manager",
+        "github.com/longhorn/backing-image-manager",
+        "github.com/longhorn/cli"
       ],
       "allowedVersions": "/^v1\\.9\\.\\S+/",
       "matchManagers": [
