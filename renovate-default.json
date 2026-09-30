@@ -1,0 +1,252 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "security:openssf-scorecard"
+  ],
+  "baseBranches": [
+    "v1.9.x",
+    "v1.10.x",
+    "v1.11.x"
+  ],
+  "automergeMajor": false,
+  "dockerfile": {
+    "fileMatch": [
+      "Dockerfile.dapper"
+    ]
+  },
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "prHourlyLimit": 12,
+  "timezone": "Asia/Taipei",
+  "schedule": [
+    "after 1pm on sunday"
+  ],
+  "postUpdateOptions": ["gomodTidy"],
+  "minimumReleaseAge": "2 weeks",
+  "vulnerabilityAlerts": {
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "golang-version"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ],
+      "enabled": true
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "enabled": false
+    },
+    {
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "enabled": true
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "excludePackagePrefixes": [
+        "github.com/longhorn"
+      ],
+      "enabled": false
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchManagers": [
+        "github-actions",
+        "droneci"
+      ],
+      "enabled": false
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "rancher/dapper"
+      ],
+      "enabled": false
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchPackageNames": [
+        "github.com/rancher/lasso"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "enabled": false
+    },
+    {
+      "matchBaseBranches": [
+        "/^v1\\.(9|10|11)\\.x$/"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "matchPackageNames": [
+        "github.com/rancher/longhorn-spdk-engine"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "enabled": false
+    },
+    {
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackagePatterns": [
+        "github.com/longhorn/beszel",
+        "github.com/henrygd/beszel",
+        "beszel"
+      ],
+      "enabled": false
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "digest"
+      ],
+      "automerge": true,
+      "groupName": "patch digest dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchDatasources": [
+        "golang-version"
+      ],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "enabled": true,
+      "groupName": "golang version dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "/^v\\d+\\.\\d+\\.x/"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "automerge": true,
+      "groupName": "docker dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "v1.11.x"
+      ],
+      "matchPackageNames": [
+        "github.com/rancher/longhorn-engine",
+        "github.com/rancher/longhorn-spdk-engine",
+        "github.com/rancher/longhorn-instance-manager",
+        "github.com/rancher/longhorn-share-manager",
+        "github.com/rancher/longhorn-backing-image-manager",
+        "github.com/rancher/longhorn-cli"
+      ],
+      "allowedVersions": "/^v1\\.11\\.\\S+/",
+      "matchManagers": [
+        "gomod"
+      ],
+      "groupName": "longhorn branch repo dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "v1.10.x"
+      ],
+      "matchPackageNames": [
+        "github.com/rancher/longhorn-engine",
+        "github.com/rancher/longhorn-spdk-engine",
+        "github.com/rancher/longhorn-instance-manager",
+        "github.com/rancher/longhorn-share-manager",
+        "github.com/rancher/longhorn-backing-image-manager",
+        "github.com/rancher/longhorn-cli"
+      ],
+      "allowedVersions": "/^v1\\.10\\.\\S+/",
+      "matchManagers": [
+        "gomod"
+      ],
+      "groupName": "longhorn branch repo dependencies"
+    },
+    {
+      "matchBaseBranches": [
+        "v1.9.x"
+      ],
+      "matchPackageNames": [
+        "github.com/rancher/longhorn-engine",
+        "github.com/rancher/longhorn-spdk-engine",
+        "github.com/rancher/longhorn-instance-manager",
+        "github.com/rancher/longhorn-share-manager",
+        "github.com/rancher/longhorn-backing-image-manager",
+        "github.com/rancher/longhorn-cli"
+      ],
+      "allowedVersions": "/^v1\\.9\\.\\S+/",
+      "matchManagers": [
+        "gomod"
+      ],
+      "groupName": "longhorn branch repo dependencies"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "matchFileNames": [
+        "package/Dockerfile"
+      ],
+      "matchPackageNames": [
+        "registry.suse.com/bci/bci-base"
+      ],
+      "allowedVersions": "/^15\\.7$/"
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "minimumReleaseAge": "0 days"
+    }
+  ]
+}
