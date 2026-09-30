@@ -4,15 +4,17 @@
     "config:best-practices",
     "security:openssf-scorecard"
   ],
-  "baseBranches": [
+  "baseBranchPatterns": [
     "v1.9.x",
     "v1.10.x",
     "v1.11.x"
   ],
-  "automergeMajor": false,
+  "major": {
+    "automerge": false
+  },
   "dockerfile": {
-    "fileMatch": [
-      "Dockerfile.dapper"
+    "managerFilePatterns": [
+      "/Dockerfile.dapper/"
     ]
   },
   "semanticCommits": "enabled",
@@ -20,9 +22,6 @@
   "semanticCommitScope": "deps",
   "prHourlyLimit": 12,
   "timezone": "Asia/Taipei",
-  "schedule": [
-    "after 1pm on sunday"
-  ],
   "postUpdateOptions": ["gomodTidy"],
   "minimumReleaseAge": "2 weeks",
   "vulnerabilityAlerts": {
@@ -68,8 +67,8 @@
       "matchUpdateTypes": [
         "minor"
       ],
-      "excludePackagePrefixes": [
-        "github.com/longhorn"
+      "matchPackageNames": [
+        "!github.com/longhorn{/,}**"
       ],
       "enabled": false
     },
@@ -126,10 +125,8 @@
       "matchManagers": [
         "gomod"
       ],
-      "matchPackagePatterns": [
-        "github.com/longhorn/beszel",
-        "github.com/henrygd/beszel",
-        "beszel"
+      "matchPackageNames": [
+        "/beszel/"
       ],
       "enabled": false
     },
