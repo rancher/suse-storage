@@ -28,4 +28,7 @@ jobs:
         destination_branch: "master"
         sync_tags: "false"
         github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-        skip_rebase_files: "deploy/longhorn-images.txt"
+        skip_rebase_files: |
+          deploy/longhorn-images.txt
+          deploy/longhorn-okd.yaml
+          deploy/longhorn.yaml
