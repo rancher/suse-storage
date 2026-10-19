@@ -13,7 +13,7 @@ jobs:
       with:
         persist-credentials: false
     - name: repo-sync
-      uses: rancher/gh-issue-mgr/github-sync@b31be62f13e5bacc025c146906b674b5323d5d3b
+      uses: rancher/gh-issue-mgr/github-sync@f8c885d2c9d006903850efca86ae39ae2c9ab535
       with:
         source_repo: "https://github.com/longhorn/longhorn.git"
         source_branch: "v*.*.x"
@@ -22,7 +22,7 @@ jobs:
         sync_tags: "false"
         github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
     - name: repo-sync-master
-      uses: rancher/gh-issue-mgr/github-sync@b31be62f13e5bacc025c146906b674b5323d5d3b
+      uses: rancher/gh-issue-mgr/github-sync@f8c885d2c9d006903850efca86ae39ae2c9ab535
       with:
         source_repo: "https://github.com/longhorn/longhorn.git"
         source_branch: "master"
