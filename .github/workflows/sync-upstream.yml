@@ -18,6 +18,7 @@ jobs:
         source_repo: "https://github.com/longhorn/longhorn.git"
         source_branch: "v*.*.x"
         destination_branch: "v*.*.x"
+        sync_branches: "v1.13.x,v1.12.x"
         sync_tags: "false"
         github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
     - name: repo-sync-master
@@ -26,9 +27,6 @@ jobs:
         source_repo: "https://github.com/longhorn/longhorn.git"
         source_branch: "master"
         destination_branch: "master"
+        sync_branches: "v1.13.x,v1.12.x,v1.11.x"
         sync_tags: "false"
         github_token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-        skip_rebase_files: |
-          deploy/longhorn-images.txt
-          deploy/longhorn-okd.yaml
-          deploy/longhorn.yaml
